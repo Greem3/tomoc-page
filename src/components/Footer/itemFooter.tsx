@@ -18,7 +18,7 @@ const itemsFooter = () => {
                     />
                     <h3 className="font-bold text-2xl text-default-100">{locale.NAVBAR.LOGO_BLANK.TEXT}</h3>
                 </Link>
-                <p className="text-muted text-sm px-4 max-w-60 font-semibold">Los mejores trabajos del mundo WorkFlow</p>
+                <p className="text-muted text-sm px-4 max-w-60 font-semibold">Las mejores soluciones del mundo</p>
                 {/*Optimizar */}
                 <div className="mt-4 ml-3 flex items-center">           
                     <Link href="https://www.facebook.com" className="mr-3">
