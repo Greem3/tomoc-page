@@ -11,10 +11,10 @@ const itemsFooter = () => {
             <div className="w-1/4 mt-14 flex flex-col items-start">
                 <Link href="/" className="flex items-center">
                     <Image 
-                    src="/images/LogoWorkFlowBlanco.png"
-                    alt={locale.NAVBAR.LOGO_BLANK.ALT}
-                    width={82}
-                    height={82}
+                        src="/white/png/TOMOC-ico.png"
+                        alt={locale.NAVBAR.LOGO_BLANK.ALT}
+                        width={82}
+                        height={82}
                     />
                     <h3 className="font-bold text-2xl text-default-100">{locale.NAVBAR.LOGO_BLANK.TEXT}</h3>
                 </Link>

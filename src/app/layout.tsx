@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/index";
 import Footer from "@/components/Footer/Footer";
+import { MathJaxContext } from "better-react-mathjax";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -24,7 +25,11 @@ export default function RootLayout({
         className={`${inter.variable} antialiased`}
       >
         <Header />
-        {children}
+
+        <MathJaxContext>
+          {children}
+        </MathJaxContext>
+        
         <Footer />
       </body>
     </html>
