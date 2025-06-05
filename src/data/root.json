@@ -71,8 +71,8 @@
             "TITLE" : "Contáctanos",
             "ITEMS" : [            
                 {
-                    "TEXT" : "tomoc-maths@protonmail.com",
-                    "LINK" : "mailto:tomoc-maths@protonmail.com?Subject=Tengo%20problemas%20con%20mi%20cuenta"
+                    "TEXT" : "tomoc@workmail.com",
+                    "LINK" : "mailto:tomoc@workmail.com?Subject=Tengo%20problemas%20con%20mi%20cuenta"
                 }
             ]
         }
