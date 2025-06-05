@@ -7,39 +7,41 @@ import { FaLinkedin, FaFacebook } from "react-icons/fa";
 
 const itemsFooter = () => {
   return (
-    <div className="flex item-center justify-between items-start m-10 ">
-      <div className="w-1/4 mt-14 flex flex-col items-start">
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/white/png/TOMOC-ico.png"
-            alt={locale.NAVBAR.LOGO_BLANK.ALT}
-            width={82}
-            height={82}
-          />
-          <h3 className="font-bold text-2xl text-default-100">
-            {locale.NAVBAR.LOGO_BLANK.TEXT}
-          </h3>
-        </Link>
-        <p className="text-muted text-sm px-4 max-w-60 font-semibold">
-          Su sitio matemático de confianza, TOMOC.
-        </p>
-        {/*Optimizar */}
-        <div className="mt-4 ml-3 flex items-center">
-          <Link href="https://www.facebook.com" className="mr-3">
-            <FaFacebook className="w-6 h-6" />
+    <>
+      <div className="flex item-center justify-between items-start m-10 ">
+        <div className="w-1/4 mt-14 flex flex-col items-start">
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/white/png/TOMOC-ico.png"
+              alt={locale.NAVBAR.LOGO_BLANK.ALT}
+              width={82}
+              height={82}
+            />
+            <h3 className="font-bold text-2xl text-default-100">
+              {locale.NAVBAR.LOGO_BLANK.TEXT}
+            </h3>
           </Link>
-          <Link href="https://www.instagram.com" className="mr-3">
-            <Instagram width={24} height={24} />
-          </Link>
-          <Link href="https://www.github.com" className="mr-3">
-            <Github width={24} height={24} />
-          </Link>
-          <Link href="https://www.linkedin.com" className="mr-3">
-            <FaLinkedin className="w-6 h-6" />
-          </Link>
-          <Link href="https://www.x.com" className="mr-3">
-            <FaXTwitter className="w-6 h-6" />
-          </Link>
+          <p className="text-muted text-sm px-4 max-w-60 font-semibold">
+            Las mejores soluciones del mundo
+          </p>
+          {/*Optimizar */}
+          <div className="mt-4 ml-3 flex items-center">
+            <Link href="https://www.facebook.com" className="mr-3">
+              <FaFacebook className="w-6 h-6" />
+            </Link>
+            <Link href="https://www.instagram.com" className="mr-3">
+              <Instagram width={24} height={24} />
+            </Link>
+            <Link href="https://www.github.com" className="mr-3">
+              <Github width={24} height={24} />
+            </Link>
+            <Link href="https://www.linkedin.com" className="mr-3">
+              <FaLinkedin className="w-6 h-6" />
+            </Link>
+            <Link href="https://www.x.com" className="mr-3">
+              <FaXTwitter className="w-6 h-6" />
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -64,7 +66,7 @@ const itemsFooter = () => {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

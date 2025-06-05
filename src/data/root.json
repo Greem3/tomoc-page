@@ -1,7 +1,7 @@
 {
     "WEBSITE" : {
-        "TITLE": "Tomoc",
-        "DESCRIPTION": "Tomoc es una app de matemáticas ",
+        "TITLE": "TOSMOC",
+        "DESCRIPTION": "TOSMOC es una app de matemáticas ",
         "KEYWORDS": "matemáticas, matemáticas, matemáticas, matemáticas"
     },
     "NAVBAR": {
@@ -10,13 +10,13 @@
         "REGISTER_BUTTON": "Registro",
         "LINK_REGISTER": "/registro",   
         "LOGO" : {
-            "TEXT": "Tomoc",
+            "TEXT": "TOSMOC",
             "LINK": "/",
             "SRC": "/LogoTomoc.png",
             "ALT": "Logo de la empresa"
         },
         "LOGO_BLANK" : {
-            "TEXT": "Tomoc",
+            "TEXT": "TOSMOC",
             "LINK": "/",
             "SRC": "/LogoTomocBlanco.png",
             "ALT": "Logo de la empresa"
@@ -71,12 +71,8 @@
             "TITLE" : "Contáctanos",
             "ITEMS" : [            
                 {
-                    "TEXT" : "Info@tomoc.com",
-                    "LINK" : "mailto:Info@tomoc.com?Subject=Tengo%20problemas%20con%20mi%20cuenta"
-                },
-                {
-                    "TEXT" : "+1 (849)-433-0448",
-                    "LINK" : "tel:+18494330448"
+                    "TEXT" : "tomoc@workmail.com",
+                    "LINK" : "mailto:tomoc@workmail.com?Subject=Tengo%20problemas%20con%20mi%20cuenta"
                 }
             ]
         }
@@ -101,7 +97,7 @@
         },
         {
             "PLATFORM" : "GitHub",
-            "LINK" : "https://github.com/ramerlinj"
+            "LINK" : "https://github.com/Greem3"
         }
     ]
 }

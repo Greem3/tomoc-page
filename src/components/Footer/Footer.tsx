@@ -10,7 +10,7 @@ const Footer = () => {
         <hr className="mt-10 mx-10" />
         <div className="fex justify-center items-center py-8">
           <p className="text-center text-muted">
-            © TOMOC. Todos los derechos reservados
+            © TOSMOC. Todos los derechos reservados
           </p>
         </div>
       </div>
