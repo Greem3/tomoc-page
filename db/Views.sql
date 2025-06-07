@@ -106,7 +106,7 @@ select
     u.id as user_id,
     u.username,
     e.create_date,
-    t.id as problem_type,
+    t.id as problem_type_id,
     t.name as problem_type_name,
     p.contest_id,
     o.name as contest_name,
@@ -132,13 +132,13 @@ select
     entity_id,
     username,
     create_date,
-    problem_type_name as problem_type,
+    problem_type_name,
     contest_name,
     contest_short_name,
     contest_type,
     problem_name,
     explication,
-    country_name as country,
+    country_name,
     difficulty,
     points,
     verified
@@ -453,24 +453,24 @@ select
 from content.VUsersStats u
 go
 
-CREATE OR ALTER VIEW dbo.VAudits
-as
-SELECT
-    a.event_time as event_date,
-    a.host_name,
-    a.application_name,
-    a.client_ip,
-    b.name as [action],
-    a.object_name as object_name,
-    a.statement,
-    a.server_principal_name as [user],
-    a.session_server_principal_name as [login],
-    a.succeeded
-FROM sys.fn_get_audit_file('C:\SQLAudits\TomocAudit_A7444D6C-E380-4C03-BA3F-B36292145028_0_133921684906600000.sqlaudit', DEFAULT, DEFAULT) as a
-LEFT JOIN
-    sys.dm_audit_actions AS b ON a.action_id = b.action_id
-WHERE a.database_name = 'TomocDb' and a.object_name != 'Audits';
-go
+-- CREATE OR ALTER VIEW dbo.VAudits
+-- as
+-- SELECT
+--     a.event_time as event_date,
+--     a.host_name,
+--     a.application_name,
+--     a.client_ip,
+--     b.name as [action],
+--     a.object_name as object_name,
+--     a.statement,
+--     a.server_principal_name as [user],
+--     a.session_server_principal_name as [login],
+--     a.succeeded
+-- FROM sys.fn_get_audit_file('C:\SQLAudits\TomocAudit_A7444D6C-E380-4C03-BA3F-B36292145028_0_133921684906600000.sqlaudit', DEFAULT, DEFAULT) as a
+-- LEFT JOIN
+--     sys.dm_audit_actions AS b ON a.action_id = b.action_id
+-- WHERE a.database_name = 'TomocDb' and a.object_name != 'Audits';
+-- go
 
 create or alter view inside.VRandint as
 select top 1
