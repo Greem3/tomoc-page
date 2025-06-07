@@ -1,5 +1,6 @@
 import { ArrowRight, Play, Star, Users, BookOpen, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import LaTexMarkdown from "@/components/Texts/LaTexMarkdown"
 
 export default function Hero() {
     return (
@@ -77,21 +78,27 @@ export default function Hero() {
 
                             <div className="relative z-10 flex h-full flex-col items-center justify-center space-y-8">
                                 <div className="text-center">
-                                    <div className="mb-4 text-4xl font-bold text-variant-1 animate-pulse">C = 2πr</div>
+                                    <LaTexMarkdown className="mb-4 text-4xl font-bold text-variant-1 animate-pulse">
+                                        {'$$C=2\\pi r$$'}
+                                    </LaTexMarkdown>
                                     <div className="text-sm text-text-secondary">Circunferencia de un circulo</div>
                                 </div>
 
                                 <div className="h-px w-full bg-gradient-to-r from-transparent via-variant-1 to-transparent"></div>
 
                                 <div className="text-center">
-                                    <div className="mb-4 text-3xl font-bold text-default-400 animate-bounce">c = √a² + b²</div>
+                                    <LaTexMarkdown className="mb-4 text-3xl font-bold text-default-400 animate-bounce">
+                                        {'$$c=\\sqrt{a^2+b^2}$$'}
+                                    </LaTexMarkdown>
                                     <div className="text-sm text-text-secondary">Teorema de Pitágoras</div>
                                 </div>
 
                                 <div className="h-px w-full bg-gradient-to-r from-transparent via-default-400 to-transparent"></div>
 
                                 <div className="text-center">
-                                    <div className="mb-4 text-3xl font-bold text-default-300 animate-pulse">e^ipi + 1 = 0</div>
+                                    <LaTexMarkdown className="mb-4 text-3xl font-bold text-default-300 animate-pulse">
+                                        {'$$e^{i\\pi} + 1 = 0$$'}
+                                    </LaTexMarkdown>
                                     <div className="text-sm text-text-secondary">Identidad de Euler</div>
                                 </div>
                             </div>

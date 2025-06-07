@@ -1,6 +1,22 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Estilos para fórmulas LaTeX */
+.latex-container {
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+.latex-container .MathJax {
+    margin: 0.5em 0;
+}
+
+.latex-container .MathJax[display="true"] {
+    margin: 1em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+}
 
 :root {
   /* 🎨 Colores por defecto */
