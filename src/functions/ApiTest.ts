@@ -2,12 +2,12 @@
 //TODO: Probar por que este codigo deja de ejecutar la pagina
 
 import IVContests from "@/interfaces/Views/IVContests";
-import useJsqlApi, { ISelect } from "jsql-api"
+import { fetchJsqlApi, ISelect } from "jsql-api"
 
 export async function getOlympiads() {
     try {
         console.log("Iniciando consulta...");
-        const data = await useJsqlApi<ISelect<IVContests>, IVContests>({
+        const data = await fetchJsqlApi<ISelect<IVContests>, IVContests>({
             path: 'select',
             method: 'post',
             params: {
@@ -15,7 +15,8 @@ export async function getOlympiads() {
                 database: 'TomocDb',
                 uid: 'ServerTomocAdmin',
                 pwd: 'Tomoc@Db.2025',
-                encrypt: 'no'
+                encrypt: 'no',
+                trust_server_certificate: 'yes'
             },
             isLocal: 8000,
             body: {

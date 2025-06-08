@@ -14,6 +14,7 @@ export default function MarkdownLaTexEditor({...rest}: MDEditorProps) {
             remarkPlugins: [remarkMath, remarkGfm],
             rehypePlugins: [rehypeKatex]
         }}
+        data-color-mode="light"
     />
   );
 }

@@ -112,7 +112,8 @@ export const problems: Problem[] = [
                 approach: "Trigonometría",
                 content: "Intenté usar la ley de senos pero cometí un error al no considerar que las bisectrices dividen los ángulos en partes iguales. Mi demostración asumía incorrectamente que $\\sin A = \\sin B = \\sin C$ implicaba directamente que $A = B = C$."
             }
-        ]
+        ],
+        mySolutionsList: []
     },
     {
         id: 3,
@@ -158,6 +159,7 @@ export const problems: Problem[] = [
                 approach: "Permutaciones",
                 content: "Mi solución dio 10,080 configuraciones porque olvidé incluir el caso donde algunas de las columnas de la diagonal principal quedan vacías. Solo consideré el caso donde todas las columnas debían tener exactamente una torre."
             }
-        ]
+        ],
+        mySolutionsList: []
     }
 ] 

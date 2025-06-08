@@ -38,14 +38,14 @@ export default function UserDetails({
 
   const rankInfo = getRankFromElo(score);
   return (
-    <div className="flex flex-row items-start h-3/4 m-16 bg-[#fefefe] rounded-2xl p-8 py-4 relative">
-      <section className="bg-white flex items-center justify-center w-40 h-40 -mt-16 rounded-full mr-8">
+    <div className="flex flex-row items-start h-3/4 m-16 bg-[#fefefe] rounded-2xl p-8 py-4 relative shadow-md border-1">
+      <section className="bg-white flex items-center justify-center w-40 h-40 -mt-16 rounded-full mr-8 border-1">
         <Image
           width={144}
           height={144}
           src={pfp}
           alt="Imagen del usuario"
-          className="rounded-full "
+          className="rounded-full"
           loading="lazy"
         />
       </section>
