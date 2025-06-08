@@ -11,6 +11,16 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const config = {
+  tex: {
+    inlineMath: [["$", "$"]],
+    displayMath: [["$$", "$$"]],
+  },
+  startup: {
+    typeset: false
+  }
+}
+
 export const metadata: Metadata = {
   title: "TOMOC App",
   description: "Aplicación de olimpiadas matemáticas",
@@ -28,10 +38,10 @@ export default function RootLayout({
       >
         <Header />
 
-        <MathJaxContext>
+        <MathJaxContext config={config}>
           {children}
         </MathJaxContext>
-        
+
         <Footer />
       </body>
     </html>

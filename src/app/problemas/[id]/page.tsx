@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { Problem } from "../_components/types"
 import { ProblemDetail } from "../_components/ProblemDetail"
 import { problems } from "../_components/problems-data"
@@ -13,6 +14,7 @@ interface Props {
 
 export default function ProblemPage() {
     const { id } = useParams()
+    const [showSolutionDialog, setShowSolutionDialog] = useState(false)
 
     const problemId = Number(id)
 
@@ -34,8 +36,8 @@ export default function ProblemPage() {
                 <div className="max-w-4xl mx-auto">
                     <ProblemDetail
                         problem={problem}
-                        showSolutionDialog={false}
-                        setShowSolutionDialog={() => { }}
+                        showSolutionDialog={showSolutionDialog}
+                        setShowSolutionDialog={setShowSolutionDialog}
                         isFullPage={true}
                     />
                 </div>
