@@ -12,7 +12,7 @@ export const problems: Problem[] = [
         date: "2024-01-15",
         likes: 89,
         statement:
-            "Encuentra todas las soluciones enteras positivas de la ecuación $x^3 + y^3 = z^3 + w^3$ donde $x, y, z, w$ son distintos y menores que 100.",
+            "Encuentra todas las soluciones enteras positivas de la ecuación $$x^3 + y^3 = z^3 + w^3$$ donde $$x, y, z, w$$ son distintos y menores que 100.",
         explanation:
             "Este problema combina teoría de números algebraica con técnicas de búsqueda exhaustiva. La identidad clave es $(a^3 + b^3) = (a + b)(a^2 - ab + b^2)$. Utilizamos congruencias módulo pequeños primos para reducir el espacio de búsqueda.",
         officialSolution: {

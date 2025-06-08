@@ -1,5 +1,6 @@
 "use client"
 
+import LaTexMarkdown from "@/components/Texts/LaTexMarkdown"
 import { Problem } from "./types"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -34,7 +35,7 @@ export function ProblemCard({ problem, isSelected, onClick }: ProblemCardProps) 
                         <span>{problem.difficulty}</span>
                     </div>
                 </div>
-                <p className="text-sm text-secondary line-clamp-2">{problem.statement}</p>
+                <LaTexMarkdown className="text-sm text-secondary line-clamp-2">{problem.statement}</LaTexMarkdown>
                 <div className="flex items-center justify-between text-sm">
                     <span className="text-secondary">{problem.author}</span>
                     <div className="flex items-center gap-4">
