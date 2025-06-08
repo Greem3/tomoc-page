@@ -3,7 +3,7 @@
 import { Problem } from "../_components/types"
 import { ProblemDetail } from "../_components/ProblemDetail"
 import { problems } from "../_components/problems-data"
-import { notFound } from "next/navigation"
+import { notFound, useParams } from "next/navigation"
 
 interface Props {
     params: {
@@ -11,8 +11,10 @@ interface Props {
     }
 }
 
-export default function ProblemPage({ params }: Props) {
-    const problemId = parseInt(params.id)
+export default function ProblemPage() {
+    const { id } = useParams()
+
+    const problemId = Number(id)
 
     // Validar que el ID sea un número válido
     if (isNaN(problemId)) {
