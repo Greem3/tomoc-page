@@ -4,10 +4,11 @@ export type Solution = {
     username: string
     date: string
     approach: string
-    status: 'correct' | 'incorrect'
-    explanation: string
-    answer: string
+    status?: 'correct' | 'incorrect'
+    explanation?: string
+    answer?: string
     feedback?: string
+    content?: string;
 }
 
 export type Problem = {
