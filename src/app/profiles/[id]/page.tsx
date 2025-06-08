@@ -7,6 +7,11 @@ export default async function Profile({
   params: Promise<{ id: number }>;
 }) {
   const { id } = await params;
+
+  // Simulamos que el usuario actual tiene ID 1 (en producción esto vendría de la sesión/auth)
+  const currentUserId = 1;
+  const isOwnProfile = Number(id) === currentUserId;
+
   return (
     <main className="min-h-screen bg-gray-50">
       <UserDetails
@@ -15,6 +20,7 @@ export default async function Profile({
         username="xhand98"
         country="República Dominicana"
         score={1500}
+        isOwnProfile={isOwnProfile}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

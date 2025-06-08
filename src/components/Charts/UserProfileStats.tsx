@@ -14,6 +14,7 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import ProblemDifficultyRadarChart from "./ProblemDifficultyRadarChart";
 
 interface UserProfileStatsProps {
   userId: number;
@@ -219,6 +220,9 @@ export default function UserProfileStats({ userId }: UserProfileStatsProps) {
           </ResponsiveContainer>
         </div>
       )}
+
+      {/* Gráfico radar de dificultad de problemas */}
+      <ProblemDifficultyRadarChart userId={userId} />
     </div>
   );
 }
