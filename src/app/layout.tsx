@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/index";
 import Footer from "@/components/Footer/Footer";
-import Script from "next/script";
 import { MathJaxContext } from "better-react-mathjax";
 
 const inter = Inter({

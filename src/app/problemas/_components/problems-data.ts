@@ -1,119 +1,180 @@
 import { Problem } from "./types"
 
-//!Datos de prueba
-
 export const problems: Problem[] = [
     {
         id: 1,
-        title: "Ecuación Diofántica con Restricciones",
-        difficulty: "Avanzado",
-        category: "Teoría de Números",
-        author: "Prof. Ramerlin Castillo",
-        date: "2024-01-15",
-        likes: 89,
-        statement:
-            "Encuentra todas las soluciones enteras positivas de la ecuación $$x^3 + y^3 = z^3 + w^3$$ donde $$x, y, z, w$$ son distintos y menores que 100.",
-        explanation:
-            "Este problema combina teoría de números algebraica con técnicas de búsqueda exhaustiva. La identidad clave es $(a^3 + b^3) = (a + b)(a^2 - ab + b^2)$. Utilizamos congruencias módulo pequeños primos para reducir el espacio de búsqueda.",
+        title: "Derivada de una Función Exponencial",
+        category: "Cálculo",
+        difficulty: "Intermedio",
+        author: "Prof. García",
+        statement: `En una investigación sobre el crecimiento poblacional de bacterias, se ha observado que la población sigue una función exponencial combinada con un término cuadrático:
+
+cachu
+$$
+P(t) = e^{2t} + 3t^2
+$$
+
+donde:
+- cachu $$P(t)$$ representa la población de bacterias (en miles)
+- cachu $$t$$ es el tiempo transcurrido (en horas)
+
+Se necesita:
+1) Encontrar la tasa de crecimiento de la población en cualquier momento cachu $$t$$, es decir, hallar cachu $$P'(t)$$.
+2) Explicar el significado de cada término en la derivada resultante.
+
+**Nota**: Recuerda que la derivada nos dará la velocidad instantánea de crecimiento de la población.`,
+        explanation: "Para resolver este problema, aplicaremos las reglas de derivación paso a paso, interpretando cada término en el contexto del crecimiento poblacional.",
+        correctSolutions: 2,
+        incorrectSolutions: 1,
+        likes: 15,
+        isLiked: false,
         officialSolution: {
-            explanation: "Aplicando la parametrización de Ramanujan para sumas de cubos: $$x^3 + y^3 = z^3 + w^3$$ tiene soluciones de la forma $x = a^3 + b^3$, $y = (a+b)^3 - a^3 - b^3$. Analizando módulo 9, podemos reducir significativamente el espacio de búsqueda. Luego, para cada valor posible de $x$ y $y$, buscamos pares $(z,w)$ que satisfagan la ecuación. La búsqueda se puede optimizar notando que $z$ y $w$ también deben seguir patrones similares módulo 9.",
-            answer: "Existen exactamente 12 soluciones distintas menores que 100, siendo la más pequeña $(x,y,z,w) = (17, 39, 45, 3)$."
+            username: "Prof. García",
+            date: "2024-03-15",
+            explanation: `Resolveremos esto paso a paso:
+
+1) Primero, identificamos las partes de la función:
+   - Término exponencial: cachu $$e^{2t}$$
+   - Término cuadrático: cachu $$3t^2$$
+
+2) Derivamos cada término:
+   - Para cachu $$e^{2t}$$, usamos la regla de la cadena:
+     * La derivada de cachu $$e^x$$ es cachu $$e^x$$
+     * Como tenemos cachu $$e^{2t}$$, multiplicamos por la derivada del exponente (2)
+     * Por lo tanto:
+     cachu
+     $$
+     \\frac{d}{dt}(e^{2t}) = 2e^{2t}
+     $$
+   
+   - Para cachu $$3t^2$$, usamos la regla de la potencia:
+     * La derivada de cachu $$t^n$$ es cachu $$nt^{n-1}$$
+     * Por lo tanto:
+     cachu
+     $$
+     \\frac{d}{dt}(3t^2) = 6t
+     $$
+
+3) Sumamos los términos:
+cachu
+$$
+P'(t) = 2e^{2t} + 6t
+$$
+
+Interpretación biológica:
+- El término cachu $$2e^{2t}$$ representa el crecimiento exponencial rápido inicial
+- El término cachu $$6t$$ representa un crecimiento adicional que aumenta linealmente con el tiempo`,
+            answer: "cachu $$P'(t) = 2e^{2t} + 6t$$"
         },
-        correctSolutions: 23,
-        incorrectSolutions: 67,
-        mySolutions: 2,
-        mySolutionsList: [
+        correctSolutionsList: [
             {
                 id: 1,
-                userId: "currentUser",
-                username: "TúMismo",
-                date: "2024-03-11",
-                approach: "Teoría de Números",
-                status: 'correct',
-                explanation: "Primero, observé que por la parametrización de Ramanujan, podemos escribir las soluciones en términos de dos parámetros $a$ y $b$. Luego:\n1) Usé un programa para generar todas las combinaciones de $a$ y $b$ que dan números menores que 100\n2) Filtré las soluciones para asegurar que $x, y, z, w$ sean distintos\n3) Verifiqué cada solución sustituyendo en la ecuación original",
-                answer: "Existen exactamente 12 soluciones distintas menores que 100, siendo la más pequeña $(x,y,z,w) = (17, 39, 45, 3)$.",
-                feedback: "¡Correcto! Tu solución coincide exactamente con la respuesta esperada."
+                username: "Ana",
+                date: "2024-03-16",
+                approach: "algebraic",
+                explanation: `Primero derivé cachu $$e^{2t}$$ usando la regla de la cadena, obteniendo cachu $$2e^{2t}$$. Luego derivé cachu $$3t^2$$ usando la regla de la potencia, obteniendo cachu $$6t$$.`,
+                answer: "cachu $$P'(t) = 2e^{2t} + 6t$$"
             },
             {
                 id: 2,
-                userId: "currentUser",
-                username: "TúMismo",
-                date: "2024-03-10",
-                approach: "Búsqueda Computacional",
-                status: 'incorrect',
-                explanation: "Desarrollé un programa que busca todas las combinaciones posibles de números menores que 100. Mi proceso fue:\n1) Generar todas las cuádruplas $(x,y,z,w)$ menores que 100\n2) Verificar la ecuación $x^3 + y^3 = z^3 + w^3$\n3) Filtrar para que sean distintos",
-                answer: "Encontré 8 soluciones distintas, siendo la más pequeña $(x,y,z,w) = (12, 25, 33, 2)$.",
-                feedback: "La respuesta no es correcta. El número de soluciones y la solución más pequeña no coinciden con los valores esperados."
+                username: "Carlos",
+                date: "2024-03-17",
+                approach: "algebraic",
+                explanation: `Apliqué las reglas de derivación por separado para cada término:
+cachu
+$$
+\\begin{align*}
+\\frac{d}{dt}(e^{2t}) &= 2e^{2t} \\\\
+\\frac{d}{dt}(3t^2) &= 6t
+\\end{align*}
+$$
+Y luego sumé los resultados.`,
+                answer: "cachu $$P'(t) = 2e^{2t} + 6t$$"
             }
         ],
         incorrectSolutionsList: [
             {
-                id: 1,
-                userId: "user123",
-                username: "Estudiante123",
-                date: "2024-03-10",
-                approach: "Búsqueda Exhaustiva",
-                status: 'incorrect',
-                explanation: "Desarrollé un programa que busca todas las combinaciones posibles de números menores que 100. Mi proceso fue:\n1) Generar todas las cuádruplas $(x,y,z,w)$ menores que 100\n2) Verificar la ecuación $x^3 + y^3 = z^3 + w^3$\n3) Filtrar para que sean distintos",
-                answer: "Mi programa encontró la solución $(x,y,z,w) = (2,3,4,1)$",
-                feedback: "Tu enfoque es correcto, pero hay un error en la verificación. La solución que propones no satisface la ecuación: $2^3 + 3^3 \\neq 4^3 + 1^3$"
-            },
-            {
-                id: 2,
-                userId: "user456",
-                username: "MatematicoPrincipiante",
-                date: "2024-03-09",
-                approach: "Teoría de Números",
-                content: "Mi solución asumió incorrectamente que si $a^3 + b^3 = c^3 + d^3$, entonces necesariamente $a + b = c + d$. Esto me llevó a buscar solo en un subconjunto muy limitado de posibilidades y me perdí muchas soluciones válidas."
-            },
-            {
                 id: 3,
-                userId: "user789",
-                username: "AlgebraLearner",
-                date: "2024-03-08",
-                approach: "Álgebra",
-                content: "Cometí un error al considerar que las soluciones debían ser consecutivas. Mi respuesta fue que no existen soluciones porque asumí que $x, y, z, w$ debían formar una secuencia aritmética, lo cual es una restricción que no estaba en el problema original."
+                username: "Luis",
+                date: "2024-03-16",
+                approach: "algebraic",
+                explanation: `Intenté aplicar la regla de la cadena pero me confundí con el exponente en cachu $$e^{2t}$$, olvidando multiplicar por la derivada del exponente.`,
+                answer: "cachu $$P'(t) = e^{2t} + 6t$$"
             }
         ]
     },
     {
         id: 2,
-        title: "Configuración Geométrica Compleja",
-        difficulty: "Intermedio",
-        category: "Geometría",
-        author: "Dr. Ramerlin Castillo",
-        date: "2024-01-12",
-        likes: 56,
-        statement:
-            "En un triángulo $ABC$, sea $P$ el punto donde se intersectan las bisectrices internas. Si $AP = BP = CP$, demuestra que el triángulo es equilátero.",
-        explanation:
-            "Este problema requiere el uso de propiedades del incentro y teoremas sobre triángulos isósceles. La distancia del incentro $I$ al vértice $A$ está dada por: $$AI = \\frac{r}{\\sin(A/2)}$$ donde $r$ es el inradio.",
+        title: "Límite de una Función Racional",
+        category: "Cálculo",
+        difficulty: "Avanzado",
+        author: "Dra. Martínez",
+        statement: `Analiza el comportamiento de la siguiente función racional cuando se aproxima a un punto crítico:
+
+cachu
+$$
+f(x) = \\frac{x^2 - 4}{x - 2}
+$$
+
+Encuentra el límite cuando cachu $$x \\to 2$$.
+
+**Pista**: Observa que este es un caso de indeterminación del tipo cachu $$\\frac{0}{0}$$ que requiere factorización.`,
+        explanation: "Este es un caso de indeterminación que requiere factorización del numerador para resolver la forma indeterminada.",
+        correctSolutions: 1,
+        incorrectSolutions: 2,
+        likes: 8,
+        isLiked: false,
         officialSolution: {
-            explanation: "1) El punto $P$ es el incentro del triángulo.\n2) La distancia desde el incentro a cualquier vértice está dada por la fórmula $\\frac{r}{\\sin(\\theta/2)}$ donde $r$ es el inradio y $\\theta$ es el ángulo en ese vértice.\n3) Si $AP = BP = CP$, entonces $\\frac{r}{\\sin(A/2)} = \\frac{r}{\\sin(B/2)} = \\frac{r}{\\sin(C/2)}$\n4) Esto implica que $\\sin(A/2) = \\sin(B/2) = \\sin(C/2)$\n5) Como $0 < A,B,C < \\pi$, tenemos que $A = B = C$",
-            answer: "Por lo tanto, $A = B = C = 60°$ y el triángulo es equilátero."
+            username: "Dra. Martínez",
+            date: "2024-03-14",
+            explanation: `Resolvamos esto paso a paso:
+
+1) Cuando cachu $$x \\to 2$$, tenemos:
+   cachu
+   $$
+   \\frac{2^2 - 4}{2 - 2} = \\frac{0}{0}
+   $$
+   
+2) Factorizamos el numerador:
+   cachu
+   $$
+   x^2 - 4 = (x+2)(x-2)
+   $$
+
+3) Simplificamos la fracción:
+   cachu
+   $$
+   \\frac{x^2 - 4}{x - 2} = \\frac{(x+2)(x-2)}{x - 2} = x + 2
+   $$
+
+4) Ahora podemos evaluar el límite:
+   cachu
+   $$
+   \\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} = \\lim_{x \\to 2} (x + 2) = 4
+   $$`,
+            answer: "cachu $$\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} = 4$$"
         },
-        correctSolutions: 45,
-        incorrectSolutions: 23,
-        mySolutions: 1,
-        incorrectSolutionsList: [
+        correctSolutionsList: [
             {
                 id: 1,
-                userId: "user234",
-                username: "GeometryNewbie",
-                date: "2024-03-10",
-                approach: "Geometría Básica",
-                content: "Mi error fue asumir que si las distancias desde un punto interior a los vértices son iguales, entonces ese punto debe ser el circuncentro. No consideré que el incentro también podría tener esta propiedad bajo ciertas condiciones."
-            },
-            {
-                id: 2,
-                userId: "user567",
-                username: "TriangleMaster",
-                date: "2024-03-09",
-                approach: "Trigonometría",
-                content: "Intenté usar la ley de senos pero cometí un error al no considerar que las bisectrices dividen los ángulos en partes iguales. Mi demostración asumía incorrectamente que $\\sin A = \\sin B = \\sin C$ implicaba directamente que $A = B = C$."
+                username: "María",
+                date: "2024-03-15",
+                approach: "algebraic",
+                explanation: `Factorizé el numerador:
+cachu
+$$
+\\frac{x^2 - 4}{x - 2} = \\frac{(x+2)(x-2)}{x - 2}
+$$
+
+Cancelé el factor común cachu $$(x-2)$$ y evalué el límite de la expresión simplificada:
+cachu
+$$
+\\lim_{x \\to 2} (x + 2) = 4
+$$`,
+                answer: "cachu $$\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} = 4$$"
             }
         ],
-        mySolutionsList: []
+        mySolutionsList: [],
     },
     {
         id: 3,
@@ -133,33 +194,24 @@ export const problems: Problem[] = [
         },
         correctSolutions: 12,
         incorrectSolutions: 89,
-        mySolutions: 0,
         incorrectSolutionsList: [
             {
-                id: 1,
-                userId: "user890",
-                username: "CombinatorialStudent",
-                date: "2024-03-10",
-                approach: "Conteo Directo",
-                content: "Mi error fue contar $\\binom{8}{3}$ para las posiciones en la diagonal y luego multiplicar por $5!$ para las torres restantes. Esto es incorrecto porque no consideré que las torres restantes no pueden estar en las filas ni columnas ya ocupadas por las torres de la diagonal."
-            },
-            {
                 id: 2,
-                userId: "user012",
-                username: "ChessMaster",
-                date: "2024-03-09",
-                approach: "Recursión",
-                content: "Desarrollé un algoritmo recursivo que daba 18,432 configuraciones. El error estaba en que mi código permitía que las torres fuera de la diagonal principal también pudieran estar en la diagonal, lo cual no debería ser posible según las reglas del problema."
+                username: "Pedro",
+                date: "2024-03-15",
+                approach: "numeric",
+                explanation: `Intenté sustituir directamente cachu $$x=2$$ en la función original, lo que me llevó a la indeterminación cachu $$\\frac{0}{0}$$ y concluí erróneamente que el límite no existía.`,
+                answer: "El límite no existe"
             },
             {
                 id: 3,
-                userId: "user345",
-                username: "MathExplorer",
-                date: "2024-03-08",
-                approach: "Permutaciones",
-                content: "Mi solución dio 10,080 configuraciones porque olvidé incluir el caso donde algunas de las columnas de la diagonal principal quedan vacías. Solo consideré el caso donde todas las columnas debían tener exactamente una torre."
+                username: "Juan",
+                date: "2024-03-16",
+                approach: "algebraic",
+                explanation: `Factorizé incorrectamente el numerador como cachu $$(x-2)^2$$ en lugar de cachu $$(x+2)(x-2)$$, lo que me llevó a un resultado incorrecto.`,
+                answer: "cachu $$\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} = 2$$"
             }
         ],
         mySolutionsList: []
     }
-] 
+]
