@@ -13,9 +13,25 @@ export default function Tests() {
             markdown={text}
             onChange={setText}
         />
-        <MarkdownLaTexEditor
-            value={text}
-            onChange={(e) => setText(e ?? '')}
-        />
+        <div className="flex gap-6">
+            <MarkdownLaTexEditor
+                value={text}
+                onChange={(e) => setText(e ?? '')}
+                className='
+                    [&>*]:bg-gray-200
+                '
+                preview='edit'
+            />
+
+            <MarkdownLaTexEditor
+                value={text}
+                className='
+                    w-100
+                '
+                hideToolbar={true}
+                preview="preview"
+                
+            />
+        </div>
     </div>
 }
