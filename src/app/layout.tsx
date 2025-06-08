@@ -3,15 +3,17 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/index";
 import Footer from "@/components/Footer/Footer";
+import Script from "next/script";
 import { MathJaxContext } from "better-react-mathjax";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Tomoc",
-  description: "Tomoc es una app de matemáticas ",
+  title: "TOMOC App",
+  description: "Aplicación de olimpiadas matemáticas",
 };
 
 export default function RootLayout({
@@ -20,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
         className={`${inter.variable} antialiased`}
       >

@@ -1,3 +1,0 @@
-pyodbc
-os
-pathlib

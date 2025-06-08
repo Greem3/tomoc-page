@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+const path = require('path')
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -7,6 +8,12 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "avatar.vercel.sh",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "iilio.io",
         port: "",
         pathname: "/**",
       },
