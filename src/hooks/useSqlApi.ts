@@ -1,10 +1,9 @@
 import { Method } from "axios";
-import { IEntity, fetchJsqlApi } from "jsql-api";
-import _IQuery from "jsql-api/dist/objects/src/internal/abstract/IQuery";
+import { IEntity, IQuery, fetchJsqlApi } from "jsql-api";
 
 //! Por alguna razón esto hace que se deje de ejecutar el proyecto XD
 //! (No importa si tiene try catch, pasa lo mismo)
-export default async function useSqlApi<Query extends _IQuery, Table extends IEntity>(
+export default async function useSqlApi<Query extends IQuery, Table extends IEntity>(
     {
         path,
         method,
