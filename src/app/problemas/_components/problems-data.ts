@@ -29,6 +29,8 @@ Se necesita:
         likes: 15,
         isLiked: false,
         officialSolution: {
+            id: 1,
+            approach: "",
             username: "Prof. García",
             date: "2024-03-15",
             explanation: `Resolveremos esto paso a paso:
@@ -125,6 +127,8 @@ Encuentra el límite cuando cachu $$x \\to 2$$.
         likes: 8,
         isLiked: false,
         officialSolution: {
+            id: 1,
+            approach: "",
             username: "Dra. Martínez",
             date: "2024-03-14",
             explanation: `Resolvamos esto paso a paso:
@@ -174,6 +178,29 @@ $$`,
                 answer: "cachu $$\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} = 4$$"
             }
         ],
+        incorrectSolutionsList: []
+    },
+    {
+        id: 3,
+        title: "Problema de Conteo Avanzado",
+        difficulty: "Experto",
+        category: "Combinatoria",
+        author: "Prof. Ramerlin Perez",
+        likes: 134,
+        statement:
+            "¿De cuántas maneras se pueden colocar $8$ torres en un tablero de ajedrez $8 \\times 8$ de tal forma que no se ataquen entre sí y exactamente $3$ de ellas estén en la diagonal principal?",
+        explanation:
+            "Este problema combina el clásico problema de las 8 reinas con restricciones adicionales. El número total de permutaciones es $8!$, pero debemos considerar las restricciones de la diagonal principal.",
+        officialSolution: {
+            id: 1,
+            username: "hola",
+            date: '2025',
+            approach: "",
+            explanation: "1) Primero, elegimos 3 posiciones en la diagonal principal ($\\binom{8}{3}$ formas)\n2) Para cada elección en la diagonal, debemos colocar 5 torres en el resto del tablero\n3) Las torres restantes no pueden estar en las filas ni columnas ya ocupadas\n4) Usando el principio de inclusión-exclusión y los números de desarreglos $D_n$, calculamos: $$\\sum_{k=0}^{3} \\binom{8}{k} \\cdot D_{8-k}$$\n5) Aplicando la fórmula de los números de desarreglos: $D_n = n!\\sum_{k=0}^n \\frac{(-1)^k}{k!}$",
+            answer: "El número total de configuraciones válidas es 14,200."
+        },
+        correctSolutions: 12,
+        incorrectSolutions: 89,
         incorrectSolutionsList: [
             {
                 id: 2,
@@ -192,77 +219,7 @@ $$`,
                 answer: "cachu $$\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} = 2$$"
             }
         ],
-        mySolutionsList: []
-    },
-    {
-        id: 3,
-        title: "Problema de Conteo Avanzado",
-        category: "Combinatoria",
-        difficulty: "Experto",
-        author: "Prof. Ramerlin Perez",
-        statement: `¿De cuántas maneras se pueden colocar cachu $$8$$ torres en un tablero de ajedrez cachu $$8 \\times 8$$ de tal forma que no se ataquen entre sí y exactamente cachu $$3$$ de ellas estén en la diagonal principal?
-
-**Nota**: Recuerda que las torres se atacan si comparten la misma fila o columna.`,
-        explanation: "Este problema combina el clásico problema de las 8 reinas con restricciones adicionales. El número total de permutaciones es 8!, pero debemos considerar las restricciones de la diagonal principal.",
-        correctSolutions: 12,
-        incorrectSolutions: 89,
-        likes: 134,
-        isLiked: false,
-        officialSolution: {
-            username: "Prof. Ramerlin Perez",
-            date: "2024-01-10",
-            explanation: `Resolveremos esto paso a paso:
-
-1) Primero, elegimos 3 posiciones en la diagonal principal:
-   - Hay cachu $$\\binom{8}{3}$$ formas de hacer esto
-   - Esto determina 3 filas y 3 columnas que ya no podremos usar
-
-2) Para las 5 torres restantes:
-   - Tenemos 5 filas y 5 columnas disponibles
-   - No podemos usar las posiciones de la diagonal principal que quedaron libres
-   - Esto es un problema de desarreglos parcial
-
-3) Usando el principio de inclusión-exclusión:
-   cachu
-   $$
-   \\sum_{k=0}^{3} \\binom{8}{k} \\cdot D_{8-k}
-   $$
-   donde cachu $$D_n$$ es el número de desarreglos de n elementos.
-
-4) Aplicando la fórmula de los números de desarreglos:
-   cachu
-   $$
-   D_n = n!\\sum_{k=0}^n \\frac{(-1)^k}{k!}
-   $$
-
-5) Realizando los cálculos:
-   - cachu $$\\binom{8}{3} = 56$$
-   - Para cada elección de 3 posiciones en la diagonal, tenemos 14,200 formas de colocar las torres restantes`,
-            answer: "El número total de configuraciones válidas es 14,200"
-        },
-        correctSolutionsList: [
-            {
-                id: 1,
-                username: "Elena",
-                date: "2024-01-15",
-                approach: "combinatorial",
-                explanation: `Usé el principio de inclusión-exclusión y la fórmula de desarreglos:
-1. Primero elegí las 3 posiciones en la diagonal (cachu $$\\binom{8}{3}$$ formas)
-2. Luego calculé los desarreglos para las 5 torres restantes
-3. Multipliqué los resultados`,
-                answer: "14,200 configuraciones"
-            }
-        ],
-        incorrectSolutionsList: [
-            {
-                id: 1,
-                username: "Roberto",
-                date: "2024-01-12",
-                approach: "combinatorial",
-                explanation: `Me equivoqué al no considerar que las torres en la diagonal también ocupan filas y columnas que no pueden ser usadas por otras torres.`,
-                answer: "25,600 configuraciones"
-            }
-        ],
-        mySolutionsList: []
+        isLiked: true,
+        correctSolutionsList: [] 
     }
 ]
