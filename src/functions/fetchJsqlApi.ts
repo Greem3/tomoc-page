@@ -1,9 +1,8 @@
 import axios, { AxiosResponse, Method } from "axios";
-import { IEntity } from "jsql-api";
-import _IQuery from "jsql-api/dist/src/objects/internal/abstract/IQuery";
+import { IEntity, IQuery } from "jsql-api";
 
 
-interface IFetchSqlApiProps<Query extends _IQuery> {
+interface IFetchSqlApiProps<Query extends IQuery> {
     path: string,
     method: Method,
     body?: Query,
@@ -29,7 +28,7 @@ interface IFetchSqlApiProps<Query extends _IQuery> {
  * @param {number | undefined} [isLocal] - Use localhost for the request (save the local port)
  * @returns {Promise<T>}
  */
-export async function fetchJsqlApi<Query extends _IQuery, Table extends IEntity = any>(
+export async function fetchJsqlApi<Query extends IQuery, Table extends IEntity = any>(
     {
         path,
         method = 'GET',

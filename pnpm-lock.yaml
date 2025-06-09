@@ -57,8 +57,8 @@ importers:
         specifier: ^12.16.0
         version: 12.16.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       jsql-api:
-        specifier: ^0.0.39
-        version: 0.0.39
+        specifier: ^0.0.46
+        version: 0.0.46
       katex:
         specifier: ^0.16.22
         version: 0.16.22
@@ -2554,8 +2554,8 @@ packages:
     resolution: {integrity: sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==}
     hasBin: true
 
-  jsql-api@0.0.39:
-    resolution: {integrity: sha512-ZwlXtpW+y/Lvhvk5M+vhZ66A4Oi4jMBl2lbZxLeDoutPmuj29dYfuyLga1GGXLby4Tc/YssklcdSdUMEYtB1Vg==}
+  jsql-api@0.0.46:
+    resolution: {integrity: sha512-iXVyFV//eb5gcAZSI3OlR0aM13ApQWwXSNgWoapDFwuxbQ8rPwevu5C86QPtkgdsuTwOXnJrxm7kkjZxOVYZuQ==}
 
   jsx-ast-utils@3.3.5:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
@@ -6663,7 +6663,7 @@ snapshots:
     dependencies:
       minimist: 1.2.8
 
-  jsql-api@0.0.39:
+  jsql-api@0.0.46:
     dependencies:
       axios: 1.9.0
       concurrently: 9.1.2
