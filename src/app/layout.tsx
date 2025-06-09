@@ -21,7 +21,7 @@ const config = {
 }
 
 export const metadata: Metadata = {
-  title: "TOMOC App",
+  title: "TOSMOC",
   description: "Aplicación de olimpiadas matemáticas",
 };
 

@@ -23,6 +23,7 @@ export interface Problem {
     officialSolution: OfficialSolution;
     correctSolutionsList: Solution[];
     incorrectSolutionsList: Solution[];
+    explanation: string;
 }
 
 export interface SolutionFormData {

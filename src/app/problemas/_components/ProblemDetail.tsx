@@ -84,7 +84,7 @@ export function ProblemDetail({ problem: initialProblem, showSolutionDialog, set
             />
 
             <Tabs defaultValue="statement" className="w-full">
-                <TabsList className="grid w-full grid-cols-5">
+                <TabsList className="flex w-full">
                     <TabsTrigger value="statement">Problema</TabsTrigger>
                     <TabsTrigger value="official">Oficial</TabsTrigger>
                     <TabsTrigger value="correct">Correctas</TabsTrigger>
