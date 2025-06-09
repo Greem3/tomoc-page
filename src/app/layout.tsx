@@ -31,15 +31,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className="h-full">
       <body
-        className={`${inter.variable} antialiased`}
+        className={`${inter.variable} antialiased min-h-full flex flex-col`}
       >
         <Header />
 
-        <MathJaxContext config={config}>
-          {children}
-        </MathJaxContext>
+        <main className="flex-grow">
+          <MathJaxContext config={config}>
+            {children}
+          </MathJaxContext>
+        </main>
 
         <Footer />
       </body>
