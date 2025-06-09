@@ -13,87 +13,152 @@ import remarkGfm from "remark-gfm";
 
 function createSymbolPopup(
   symbols: { url: string; latex: string }[],
+  state: TextState,
   api: TextAreaTextApi
 ) {
-    const existing = document.querySelector('.symbol-popup-container');
-    
-    if (existing) {
-      existing.remove();
-    }
-
-    const container = document.createElement("div");
-    container.classList.add('symbol-popup-container');
-    container.style.position = "absolute";
-    container.style.zIndex = "9999";
-    container.style.backgroundColor = "white";
-    container.style.border = "1px solid #ccc";
-    container.style.borderRadius = "6px";
-    container.style.padding = "8px";
-    container.style.boxShadow = "0 4px 8px rgba(0,0,0,0.1)";
-    container.style.display = "grid";
-    container.style.gridTemplateColumns = "repeat(6, 1fr)";
-    container.style.gap = "4px";
-
-    symbols.forEach(({ url, latex }) => {
-      const btn = document.createElement("button");
-      btn.style.padding = "6px";
-      btn.style.cursor = "pointer";
-      btn.style.border = "1px solid #ddd";
-      btn.style.borderRadius = "4px";
-      btn.style.backgroundColor = "#f9f9f9";
-      btn.title = latex;
-
-      const img = document.createElement("img");
-      img.src = url;
-      img.alt = latex;
-      img.style.height = "20px";
-      img.style.width = "20px";
-
-      if(latex == "\\cdot"){
-          img.style.height = "4px";
-          img.style.width = "4px";
-      }
-      if(latex == "\\pm"){
-        img.style.height = "12px";
-          img.style.width = "12px";
-      }
-      img.style.display = "block";
-      img.style.margin = "0 auto";
-
-      btn.appendChild(img);
-
-      btn.onclick = () => {
-        api.replaceSelection(latex + " ");
-        document.body.removeChild(container);
-      };
-
-      container.appendChild(btn);
-    });
-
-    const rect = document.activeElement?.getBoundingClientRect();
-    if (rect) {
-      container.style.top = `${rect.bottom + 5 + window.scrollY}px`;
-      container.style.left = `${rect.left + window.scrollX}px`;
-    } else {
-      container.style.top = `100px`;
-      container.style.left = `100px`;
-    }
-
-    document.body.appendChild(container);
+  const {text, selection} = state;
+  const existing = document.querySelector('.symbol-popup-container');
+  
+  if (existing) {
+    existing.remove();
   }
+  
+  const container = document.createElement("div");
+  container.classList.add('symbol-popup-container');
+  container.style.position = "absolute";
+  container.style.zIndex = "9999";
+  container.style.backgroundColor = "white";
+  container.style.border = "1px solid #ccc";
+  container.style.borderRadius = "6px";
+  container.style.padding = "8px";
+  container.style.boxShadow = "0 4px 8px rgba(0,0,0,0.1)";
+  container.style.display = "grid";
+  container.style.gridTemplateColumns = "repeat(6, 1fr)";
+  container.style.gap = "4px";
+  
+  symbols.forEach(({ url, latex }) => {
+    const btn = document.createElement("button");
+    btn.style.padding = "6px";
+    btn.style.cursor = "pointer";
+    btn.style.border = "1px solid #ddd";
+    btn.style.borderRadius = "4px";
+    btn.style.backgroundColor = "#f9f9f9";
+    btn.title = latex;
+    
+    const img = document.createElement("img");
+    img.src = url;
+    img.alt = latex;
+    img.style.height = "20px";
+    img.style.width = "20px";
+    
+    if(latex == "\\cdot"){
+      img.style.height = "4px";
+      img.style.width = "4px";
+    }
+    if(latex == "\\pm"){
+      img.style.height = "12px";
+      img.style.width = "12px";
+    }
+    img.style.display = "block";
+    img.style.margin = "0 auto";
+    
+    btn.appendChild(img);
+    
+    btn.onclick = () => {
+      const cursor = selection.start;
+      const before = text.slice(0, cursor);
+      const after = text.slice(cursor);
+      
+      const lastDollarOpen = before.lastIndexOf('$');
+      const nextDollarClose = after.indexOf('$');
+      
+      const insideLatex= lastDollarOpen !== -1 && nextDollarClose !== -1;
+      
+      if(insideLatex){
+        const selectionText = text.slice(selection.start, selection.end)
+        if(latex == "()" || latex == "[]"){
+          api.replaceSelection(`\\left${latex[0]} ${selectionText} \\right${latex[1]}`)
+          const pos = cursor + latex.length;
+          api.setSelectionRange({start: pos, end: pos});
+        }
+        else if(latex = "{}"){
+          api.replaceSelection(`\\left\\{ ${selectionText} \\right\\}`)
+          const pos = cursor + latex.length;
+          api.setSelectionRange({start: pos, end: pos});
+        }
+        else if(latex == "floor" || latex == "ceil"){
+          api.replaceSelection(`\\l${latex} ${selectionText} \\r${latex}`)
+          const pos = cursor + latex.length + 3;
+          api.setSelectionRange({start: pos, end: pos + selectionText.length});
+        }
+        else{
+          api.replaceSelection(latex);
+          const pos = cursor + latex.length;
+          api.setSelectionRange({start: pos, end: pos});
+        }
+      }
+      else {
+        const selectionText = text.slice(selection.start, selection.end)
+        if(latex == "()" || latex == "[]"){
+          const block = `$\\left${latex[0]} ${selectionText} \\right${latex[1]}$`;
+          api.replaceSelection(block);
+        }
+        else if(latex == "{}"){
+          const block = `$\\left\\{ ${selectionText} \\right\\}$`;
+          api.replaceSelection(block);
+        }
+        else if(latex == "floor" || latex == "ceil"){
+          const block = `$\\l${latex} ${selectionText} \\r${latex}$`;
+          api.replaceSelection(block);
+          const pos = cursor + latex.length+ 3
+          api.setSelectionRange({start: pos, end: pos+selectionText.length})
+        }
+        
+        else {
+          const block = `$${latex}$`;
+          api.replaceSelection(block);
+        }
+        const blockStart = cursor + 2;
+        const blockEnd = blockStart + latex.length;
+        api.setSelectionRange({start: blockStart, end: blockEnd})
+      }
+      
+      
+      document.body.removeChild(container);
+    };
+    
+    container.appendChild(btn);
+  });
+  
+  const rect = document.activeElement?.getBoundingClientRect();
+  if (rect) {
+    container.style.top = `${rect.bottom + 5 + window.scrollY}px`;
+    container.style.left = `${rect.left + window.scrollX}px`;
+  } else {
+    container.style.top = `100px`;
+    container.style.left = `100px`;
+  }
+  
+  document.body.appendChild(container);
+}
 
-  const generalMathSymbols = [
-    { latex: "\\frac{a}{b}", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\frac{a}{b}" },
-    { latex: "\\sqrt{a}", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\sqrt{x}" },
-    { latex: "\\sqrt[a]{b}", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\sqrt[n]{x}" },
-    { latex: "x^{y}", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large x^{y}" },
-    { latex: "x_{y}", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large x_{y}" },
-    { latex: "\\sum_{i=1}^n i", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\sum" },
-    { latex: "\\prod_{i=1}^n i", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\prod" },
-    { latex: "\\cdot", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\cdot" },
-    { latex: "\\cdots", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\cdots" },
-    { latex: "\\pm", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\pm" }
-  ];
+const generalMathSymbols = [
+  { latex: "\\frac{a}{b}", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\frac{a}{b}" },
+  { latex: "\\sqrt{a}", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\sqrt{x}" },
+  { latex: "\\sqrt[a]{b}", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\sqrt[n]{x}" },
+  { latex: "^{2}", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large x^{2}" },
+  { latex: "_{i}", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large x_{i}" },
+  { latex: "\\sum_{i=1}^n i", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\sum" },
+  { latex: "\\prod_{i=1}^n i", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\prod" },
+  { latex: "\\cdot", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\cdot" },
+  { latex: "\\cdots", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\cdots" },
+  { latex: "\\pm", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\pm" },
+  { latex: "()", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\left( \\right)" },
+  { latex: "[]", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\left[ \\right]" },
+  { latex: "{}", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\left\\{ \\right\\}" },
+  { latex: "floor", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\lfloor \\cdot \\rfloor" },
+  { latex: "ceil", url: "https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\lceil \\cdot \\rceil" }
+];
 
 
   const geometrySymbols=[
@@ -218,28 +283,21 @@ function createSymbolPopup(
     }
   };
 
-  const insertBlockLatex: ICommand = {
-    name: "blockLatex",
-    keyCommand: "blockLatex",
-    buttonProps: { "aria-label": "Insertar LaTeX en bloque", "title": "Insertar LaTeX en bloque" },
-    icon: <img src="https://latex.codecogs.com/svg.image?\dpi{150}\$\$"></img>,
-    execute: (state: TextState, api: TextAreaTextApi) => {
-      const selectedText = state.selectedText || '';
-
-      if (state.selectedText.search(/\$[^$]+\$|\$\$[^$]+\$\$/) != -1) {
-        return;
-      }
-
-      const blockText = `$$\n${selectedText}\n$$\n`;
-
-      api.replaceSelection(blockText);
-
-      if (selectedText.length === 0) {
-        const cursorPos = state.selection.start + 4; 
-        api.setSelectionRange({ start: cursorPos, end: cursorPos });
-      }
+const insertBlockLatex: ICommand = {
+  name: "blockLatex",
+  keyCommand: "blockLatex",
+  buttonProps: { "aria-label": "Insertar LaTeX en bloque", "title": "Insertar LaTeX en bloque" },
+  icon: <img src="https://latex.codecogs.com/svg.image?\dpi{150}\$\$"></img>,
+  execute: (state: TextState, api: TextAreaTextApi) => {
+    const selectedText = state.selectedText || '';
+    const blockText = `$$\n${selectedText}\n$$\n`;
+    api.replaceSelection(blockText);
+    if (selectedText.length === 0) {
+      const cursorPos = state.selection.start + 3; 
+      api.setSelectionRange({ start: cursorPos, end: cursorPos });
     }
-  };
+  }
+};
 
   const insertGeneralSymbols: ICommand = {
     name: "generalSymbols",
@@ -247,7 +305,7 @@ function createSymbolPopup(
     icon: <svg width="5.0059304mm" height="3.078244mm" viewBox="0 0 5.0059304 3.078244" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg"><g id="layer1" transform="translate(-21.619835,-49.783442)"><rect style={{fill:"#ffeab4",fillOpacity:0,stroke:"#000",strokeWidth:0.187399,strokeLinecap:"round",strokeDasharray:"none"}} id="rect1" width="1.0411799" height="0.99646878" x="24.993706" y="49.877144"/><path style={{fill:"#ffeab4",fillOpacity:0,stroke:"#000",strokeWidth:0.3,strokeLinecap:"square",strokeDasharray:"none"}} d="m 24.573386,51.106998 c 1.050681,0 2.101363,0 3.152042,0" id="path1" transform="matrix(0.64394953,0,0,0.6824914,8.6753961,16.426425)"/><rect style={{fill:"#ffeab4",fillOpacity:0,stroke:"#000",strokeWidth:0.187399,strokeLinecap:"round",strokeDasharray:"none"}} id="rect2" width="1.0411799" height="0.99646878" x="24.993706" y="51.771519"/><path style={{fill:"#ffeab4",fillOpacity:0,stroke:"#000",strokeWidth:0.253781,strokeLinecap:"square",strokeDasharray:"none"}} d="m 21.746726,51.162949 h 0.654233 l 0.350535,1.085794 0.191765,-0.00054 0.353364,-1.745934 h 0.768255" id="path11"/></g></svg>,
     buttonProps: { "aria-label": "Símbolos Generales", title: "General" },
     execute: (state: TextState, api: TextAreaTextApi) => {
-      createSymbolPopup(generalMathSymbols, api)
+      createSymbolPopup(generalMathSymbols, state, api)
     }
   };
 
@@ -258,7 +316,7 @@ function createSymbolPopup(
     icon: <img src={"https://latex.codecogs.com/svg.image?\\dpi{150}\\mathbb{Z}"}></img>,
     buttonProps: { "aria-label": "Símbolos de Conjuntos de Números", title: "Conjuntos de números" },
     execute: (state: TextState, api: TextAreaTextApi) => {
-      createSymbolPopup(numberSetsSymbols, api)
+      createSymbolPopup(numberSetsSymbols, state, api)
     }
   };
 
@@ -268,7 +326,7 @@ function createSymbolPopup(
     icon: <img src={"https://latex.codecogs.com/svg.image?\\dpi{150}\\Rightarrow"}></img>,
     buttonProps: { "aria-label": "Símbolos de Flechas", title: "Flechas" },
     execute: (state: TextState, api: TextAreaTextApi) => {
-      createSymbolPopup(arrowSymbols, api)
+      createSymbolPopup(arrowSymbols, state, api)
     }
   };
 
@@ -278,7 +336,7 @@ function createSymbolPopup(
     icon: <img src={"https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\cup"}></img>,
     buttonProps: { "aria-label": "Símbolos de Lógica y conjuntos", title: "Lógica y conjuntos" },
     execute: (state: TextState, api: TextAreaTextApi) => {
-      createSymbolPopup(logicAndSetsSymbols, api)
+      createSymbolPopup(logicAndSetsSymbols, state, api)
     }
   };
 
@@ -288,7 +346,7 @@ function createSymbolPopup(
     icon: <img src={"https://latex.codecogs.com/svg.image?\\dpi{150}\\triangle"}></img>,
     buttonProps: { "aria-label": "Símbolos de Geometría", title: "Geometría" },
     execute: (state: TextState, api: TextAreaTextApi) => {
-      createSymbolPopup(geometrySymbols, api)
+      createSymbolPopup(geometrySymbols, state, api)
     }
   };
 
@@ -298,30 +356,30 @@ function createSymbolPopup(
     icon: <img src={'https://latex.codecogs.com/svg.image?\\dpi{150}\\large\\pi'}></img>,
     buttonProps: { "aria-label": "Letras griegas", title: "Letras griegas" },
     execute: (state: TextState, api: TextAreaTextApi) => {
-      createSymbolPopup(greekLetters, api)
+      createSymbolPopup(greekLetters, state, api)
     }
   };
 
 export default function MarkdownLaTexEditor({ ...rest }: MDEditorProps) {
   return (
     <MDEditor
-      {...rest}
-      previewOptions={{
-        remarkPlugins: [remarkMath, remarkGfm],
-        rehypePlugins: [rehypeKatex],
-      }}
-      data-color-mode="light"
-      commands={[
-        ...commands.getCommands(),
-        insertInlineLatex,
-        insertBlockLatex,
-        insertGeneralSymbols,
-        insertArrowSymbols,
-        insertLogicSets,
-        insertGeometrySymbols,
-        insertNumberSets,
-        insertGreekLetters,
-      ]}
+    {...rest}
+    previewOptions={{
+      remarkPlugins: [remarkMath, remarkGfm],
+      rehypePlugins: [rehypeKatex],
+    }}
+    data-color-mode="light"
+    commands={[
+      ...commands.getCommands(),
+      insertInlineLatex,
+      insertBlockLatex,
+      insertGeneralSymbols,
+      insertArrowSymbols,
+      insertLogicSets,
+      insertGeometrySymbols,
+      insertNumberSets,
+      insertGreekLetters,
+    ]}
     />
   );
 }
