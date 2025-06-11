@@ -49,6 +49,8 @@ export function SearchFilters({
                     }
                 </SelectContent>
             </Select>
+
+            {/*TODO: Reemplazar este Select con un rango de dificultad que vaya del 1 al 10 */}
             <Select value={difficultyFilter} onValueChange={onDifficultyChange}>
                 <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Dificultad" />
