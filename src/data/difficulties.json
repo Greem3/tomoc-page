@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Muy Fácil",
+        "minValue": 0,
+        "maxValue": 1
+    },
+    {
+        "title": "Fácil",
+        "minValue": 1,
+        "maxValue": 3
+    },
+    {
+        "title": "Intermedio",
+        "minValue": 3,
+        "maxValue": 6
+    },
+    {
+        "title": "Avanzado",
+        "minValue": 6,
+        "maxValue": 8
+    },
+    {
+        "title": "Experto",
+        "minValue": 8,
+        "maxValue": 10
+    }
+]

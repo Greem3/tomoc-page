@@ -1,0 +1,34 @@
+{
+    "features": [
+        {
+            "iconName": "Calculator",
+            "title": "Problemas de Olimpiadas",
+            "description": "Acceso a miles de problemas de olimpiadas internacionales clasificados por dificultad y tema."
+        },
+        {
+            "iconName": "BookOpen",
+            "title": "Técnicas Avanzadas",
+            "description": "Aprende métodos especializados: teoría de números, combinatorias, geometría olímpica."
+        },
+        {
+            "iconName": "Award",
+            "title": "Profesionales Expertos",
+            "description": "Entrena con ex-participantes de olimpiadas internacionales y medallistas de olimpiadas nacionales."
+        },
+        {
+            "iconName": "Users",
+            "title": "Comunidad competitiva",
+            "description": "Conecta con otros aspirantes a olimpiadas y participa en simulacros de competencia."
+        },
+        {
+            "iconName": "Brain",
+            "title": "Estrategias de competencia",
+            "description": "Desarrolla técnicas de tiempo, manejo de presión y optimización de puntajes."
+        },
+        {
+            "iconName": "LineChart",
+            "title": "Seguimiento de progreso",
+            "description": "Analiza tu rendimiento en diferentes áreas e identifica fortalezas y debilidades."
+        }
+    ]
+} 

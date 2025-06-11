@@ -1,0 +1,103 @@
+{
+    "WEBSITE" : {
+        "TITLE": "TOSMOC",
+        "DESCRIPTION": "TOSMOC es una app de matemáticas ",
+        "KEYWORDS": "matemáticas, matemáticas, matemáticas, matemáticas"
+    },
+    "NAVBAR": {
+        "LOGIN_BUTTON": "Iniciar Sesión",
+        "LINK_LOGIN": "/login",
+        "REGISTER_BUTTON": "Registro",
+        "LINK_REGISTER": "/registro",   
+        "LOGO" : {
+            "TEXT": "TOSMOC",
+            "LINK": "/",
+            "SRC": "/LogoTomoc.png",
+            "ALT": "Logo de la empresa"
+        },
+        "LOGO_BLANK" : {
+            "TEXT": "TOSMOC",
+            "LINK": "/",
+            "SRC": "/LogoTomocBlanco.png",
+            "ALT": "Logo de la empresa"
+        },
+        "ITEMS": [
+            {
+                "TEXT" : "Olimpiadas",
+                "LINK" : "/olimpiadas"
+            },
+            {
+                "TEXT" : "Problemas",
+                "LINK" : "/problemas"
+            },
+            {
+                "TEXT" : "Clubes",
+                "LINK" : "/clubes"
+            }
+        ]
+    },
+    "FOOTER" : [
+        {
+            "TITLE" : "Enlances Rápidos",
+            "ITEMS" : [            
+                {
+                    "TEXT" : "Olimpiadas",
+                    "LINK" : "/olimpiadas"
+                },
+                {
+                    "TEXT" : "Problemas",
+                    "LINK" : "/problemas"
+                },
+                {
+                    "TEXT" : "Clubes",
+                    "LINK" : "/clubes"
+                }
+            ]
+        },
+        {
+            "TITLE" : "Legal",
+            "ITEMS" : [            
+                {
+                    "TEXT" : "Política de Privacidad",
+                    "LINK" : "/politica-privacidad"
+                },
+                {
+                    "TEXT" : "Términos y Condiciones",
+                    "LINK" : "/condiciones"
+                }
+            ]
+        },
+        {
+            "TITLE" : "Contáctanos",
+            "ITEMS" : [            
+                {
+                    "TEXT" : "tomoc@workmail.com",
+                    "LINK" : "mailto:tomoc@workmail.com?Subject=Tengo%20problemas%20con%20mi%20cuenta"
+                }
+            ]
+        }
+
+    ],
+    "SOCIAL_MEDIA": [
+        {
+            "PLATFORM": "Facebook",
+            "LINK": "https://www.facebook.com"
+        },
+        {
+            "PLATFORM": "X",
+            "LINK": "https://www.x.com"
+        },
+        {
+            "PLATFORM": "Instagram",
+            "LINK": "https://www.instagram.com"
+        },
+        {
+            "PLATFORM": "LinkedIn",
+            "LINK": "https://www.linkedin.com"
+        },
+        {
+            "PLATFORM" : "GitHub",
+            "LINK" : "https://github.com/Greem3"
+        }
+    ]
+}
