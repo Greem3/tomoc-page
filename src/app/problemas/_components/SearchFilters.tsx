@@ -3,6 +3,7 @@
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search } from "lucide-react"
+import problemTypes from '@/data/problemTypes.json'
 
 interface SearchFiltersProps {
     searchQuery: string
@@ -40,10 +41,12 @@ export function SearchFilters({
                 </SelectTrigger>
                 <SelectContent>
                     <SelectItem value="all">Todas</SelectItem>
-                    <SelectItem value="algebra">Álgebra</SelectItem>
-                    <SelectItem value="geometría">Geometría</SelectItem>
-                    <SelectItem value="teoría de números">Teoría de Números</SelectItem>
-                    <SelectItem value="combinatoria">Combinatoria</SelectItem>
+                    {problemTypes.map((problemType) => <SelectItem
+                        value={problemType.name}
+                    >
+                        {problemType.name}
+                    </SelectItem>)
+                    }
                 </SelectContent>
             </Select>
             <Select value={difficultyFilter} onValueChange={onDifficultyChange}>

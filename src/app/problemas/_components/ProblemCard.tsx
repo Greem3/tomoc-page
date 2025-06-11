@@ -2,7 +2,6 @@
 
 import LaTexMarkdown from "@/components/Texts/LaTexMarkdown"
 import { Problem } from "./types"
-import Link from "next/link"
 import { useRouter } from "next/navigation"
 
 interface ProblemCardProps {
