@@ -24,7 +24,7 @@ export interface ImageInfo {
   md5: string;
   storage: string;
   original_filename: string;
-  original_exifdata: any | null;
+  original_exifdata: string | null;
   views: string;
   id_encoded: string;
   filename: string;
@@ -32,7 +32,7 @@ export interface ImageInfo {
   size_formatted: string;
   mime: string;
   bits: number;
-  channels: any | null;
+  channels: string[] | null;
   url: string;
   url_viewer: string;
   thumb: ImageVariant;
@@ -53,6 +53,6 @@ export interface ImageVariant {
   mime: string;
   extension: string;
   bits: number;
-  channels: any | null;
+  channels: string[] | null;
   url: string;
 }

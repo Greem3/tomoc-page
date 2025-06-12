@@ -13,7 +13,7 @@ const Ranks = [
 ];
 
 interface UserDetailsProps extends IEntity {
-  id: Number;
+  id: number;
   pfp?: string;
   country?: string;
   username?: string;

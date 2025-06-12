@@ -1,7 +1,7 @@
 import { verifyMode } from "@/functions/verifyMode";
 import { IEntity, IQuery, fetchJsqlApi } from "jsql-api";
 
-export default async function useSqlApi<Query extends IQuery, Table extends IEntity>(
+export default async function fetchSqlApi<Query extends IQuery, Table extends IEntity>(
     {
         path,
         method,

@@ -214,7 +214,7 @@ export default function ReportProfileModal({ userId, username }: ReportProfileMo
                 {reason === "other" && !description.trim() && !errors.description && (
                   <p className="text-xs text-blue-600 flex items-center gap-1">
                     <AlertTriangle className="h-3 w-3" />
-                    La descripción es obligatoria cuando seleccionas "Otro"
+                    La descripción es obligatoria cuando seleccionas {'"Otro"'}
                   </p>
                 )}
               </div>

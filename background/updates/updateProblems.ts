@@ -1,4 +1,4 @@
-import useSqlApi from '../../src/hooks/useSqlApi'
+import useSqlApi from '../../src/hooks/fetchSqlApi'
 import { ISelect } from 'jsql-api'
 import { editFile } from '../utils/writeFile'
 import IVProblems from '@/interfaces/Views/IVProblems'

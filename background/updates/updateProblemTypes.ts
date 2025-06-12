@@ -1,4 +1,4 @@
-import useSqlApi from '../../src/hooks/useSqlApi'
+import useSqlApi from '../../src/hooks/fetchSqlApi'
 import { IProblemTypes } from '../../src/interfaces/Views/IProblemTypes'
 import { ISelect } from 'jsql-api'
 import { editFile } from '../utils/writeFile'
