@@ -9,6 +9,6 @@ export async function showError(task: (...args: any[]) => Promise<void>, index: 
         return await task();
     }
     catch (error) {
-        console.error(`Task ${index} Error: `, error);
+        console.error(`Task ${index} ${task.name && `(${task.name})`} Error: `, error);
     }
 }
