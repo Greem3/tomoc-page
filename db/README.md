@@ -1,7 +1,7 @@
 
 # How to execute
 
-1-Config.sql (si no tienes la db creada)
+1-Config.sql (If you don't have the database created)
 
 2-Schemas.sql
 
