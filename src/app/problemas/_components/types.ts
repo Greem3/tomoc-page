@@ -7,7 +7,9 @@ export interface Solution {
     answer: string;
 }
 
-export interface OfficialSolution extends Solution {}
+export interface OfficialSolution extends Solution {
+    test?: string;
+}
 
 export interface Problem {
     id: number;

@@ -9,7 +9,6 @@ import {
   Radar,
   ResponsiveContainer,
   Legend,
-  Tooltip,
 } from "recharts";
 
 interface ProblemType {
@@ -94,27 +93,27 @@ export default function ProblemDifficultyRadarChart({ userId }: ProblemDifficult
     }
   };
 
-  const customTooltip = ({ active, payload, label }: any) => {
-    if (active && payload && payload.length) {
-      const data = payload[0].payload;
-      return (
-        <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-md">
-          <p className="font-semibold text-gray-800">{label}</p>
-          <p className="text-blue-600">
-            Promedio de dificultad: <span className="font-bold">{data.average}/10</span>
-          </p>
-          <p className="text-gray-600 text-sm">
-            Problemas resueltos: {data.difficulties.length}
-          </p>
-          <div className="mt-2">
-            <p className="text-xs text-gray-500">Dificultades individuales:</p>
-            <p className="text-xs text-gray-700">[{data.difficulties.join(', ')}]</p>
-          </div>
-        </div>
-      );
-    }
-    return null;
-  };
+  // const customTooltip = ({ active, payload, label }: { active: boolean, payload: {payload: {average: number, difficulties: number[]}}[], label: string}) => {
+  //   if (active && payload && payload.length) {
+  //     const data = payload[0].payload;
+  //     return (
+  //       <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-md">
+  //         <p className="font-semibold text-gray-800">{label}</p>
+  //         <p className="text-blue-600">
+  //           Promedio de dificultad: <span className="font-bold">{data.average}/10</span>
+  //         </p>
+  //         <p className="text-gray-600 text-sm">
+  //           Problemas resueltos: {data.difficulties.length}
+  //         </p>
+  //         <div className="mt-2">
+  //           <p className="text-xs text-gray-500">Dificultades individuales:</p>
+  //           <p className="text-xs text-gray-700">[{data.difficulties.join(', ')}]</p>
+  //         </div>
+  //       </div>
+  //     );
+  //   }
+  //   return null;
+  // };
 
   if (loading) {
     return (
@@ -154,7 +153,8 @@ export default function ProblemDifficultyRadarChart({ userId }: ProblemDifficult
             strokeWidth={2}
             dot={{ fill: '#3B82F6', strokeWidth: 2, r: 4 }}
           />
-          <Tooltip content={customTooltip} />
+          {/*TODO: No se como arreglar esto xd (da error) */}
+          {/* <Tooltip content={customTooltip} /> */}
           <Legend
             wrapperStyle={{ paddingTop: '20px' }}
             iconType="circle"

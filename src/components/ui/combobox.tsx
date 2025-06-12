@@ -70,7 +70,7 @@ export function Combobox({
               <CommandItem
                 key={option.value}
                 value={option.value}
-                onSelect={(currentValue) => {
+                onSelect={(currentValue: string) => {
                   const newValue = currentValue === selected ? "" : currentValue
                   setSelected(newValue)
                   onSelect(newValue)

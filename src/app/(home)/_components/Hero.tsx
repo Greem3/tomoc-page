@@ -1,5 +1,4 @@
-import { ArrowRight, Play, Star, Users, BookOpen, Award } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Star, BookOpen, Award } from "lucide-react"
 import LaTexMarkdown from "@/components/Texts/LaTexMarkdown"
 
 export default function Hero() {

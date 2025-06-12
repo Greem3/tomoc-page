@@ -1,16 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { Problem } from "../_components/types"
 import { ProblemDetail } from "../_components/ProblemDetail"
 import { problems } from "../_components/problems-data"
 import { notFound, useParams } from "next/navigation"
-
-interface Props {
-    params: {
-        id: string
-    }
-}
 
 export default function ProblemPage() {
     const { id } = useParams()
