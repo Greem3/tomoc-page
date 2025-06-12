@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { HTMLAttributes } from "react";
 import Markdown, { Components } from "react-markdown";
 import rehypeKatex from "rehype-katex";
@@ -22,12 +23,12 @@ export default function LaTexMarkdown({ className, components, children }: ITOMO
             remarkPlugins={[remarkGfm, remarkMath]}
             rehypePlugins={[rehypeKatex]}
             components={{
-                //@ts-ignore
+                //@ts-expect-error Actually, this don't throw a error
                 h1: ({node, ...props}: MarkdownComponentProps) => {
                     const text = node.children.map((child: any) => child.value).join("");
                     return <strong style={{fontSize: '1.5rem'}} {...props}>{text}</strong>
                 },
-                //@ts-ignore
+                //@ts-expect-error Actually, this don't throw a error
                 h2: ({node, ...props}: MarkdownComponentProps) => {
                     const text = node.children.map((child: any) => child.value).join('');
                     return <strong style={{fontSize: '1.0rem'}} {...props}>{text}</strong>

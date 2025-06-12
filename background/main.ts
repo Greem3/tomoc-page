@@ -15,8 +15,8 @@ export const __dirname = path.dirname(__filename);
 //Secondary Information Level
 executeSameLevelTasks([
     updateProblemTypes
-], 600000);
+], 600000); // 10 minutes (600000)
 
 executeDistinctLevelTasks([
     updateProblems
-], 60000)
+], 60000); // 1 minute (60000)
