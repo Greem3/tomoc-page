@@ -103,8 +103,8 @@ create or alter view content.VProblems as
 select
     p.id,
     e.id as entity_id,
-    u.id as user_id,
-    u.username,
+    u.id as author_id,
+    u.username as author,
     e.create_date,
     t.id as problem_type_id,
     t.name as problem_type_name,
@@ -130,7 +130,7 @@ create or alter view content.VSimpleProblems as
 select
     id,
     entity_id,
-    username,
+    author,
     create_date,
     problem_type_name,
     contest_name,
