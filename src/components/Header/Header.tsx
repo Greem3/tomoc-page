@@ -9,6 +9,7 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MobileNav from "./MobileNav";
 import { useState } from "react";
+import TosmocLogo from "../TosmocLogo";
 
 const Header = () => {
   const router = useRouter();
@@ -24,13 +25,11 @@ const Header = () => {
         {/* Logo */}
         <div className="flex items-center gap-4 min-w-[200px]">
           <Link href="/" aria-label="home page" className="flex items-center group">
-            <div className="w-[100px] h-[75px] relative flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-              <Image
-                src="/LogoTomoc.png"
-                alt={locale.NAVBAR.LOGO.ALT}
-                fill
-                priority
-                className="object-contain"
+            <div className="w-[100px] h-[75px] relative flex justify-center transition-transform duration-300 group-hover:scale-105">
+              <TosmocLogo
+                variant='dark'
+                imageHeight={48}
+                imageWidth={48}
               />
             </div>
           </Link>

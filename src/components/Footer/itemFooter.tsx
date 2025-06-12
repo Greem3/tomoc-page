@@ -1,24 +1,16 @@
 import locale from "@/data/root.json";
 import Link from "next/link";
-import Image from "next/image";
 import { Github, Instagram } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedin, FaFacebook } from "react-icons/fa";
+import TosmocLogo from "../TosmocLogo";
 
 const itemsFooter = () => {
   return (
     <div className="flex item-center justify-between items-start m-10 ">
-      <div className="w-1/4 mt-14 flex flex-col items-start">
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/white/png/TOMOC-ico.png"
-            alt={locale.NAVBAR.LOGO_BLANK.ALT}
-            width={82}
-            height={82}
-          />
-          <h3 className="font-bold text-2xl text-default-100">
-            {locale.NAVBAR.LOGO_BLANK.TEXT}
-          </h3>
+      <div className="w-1/4 mt-14 flex flex-col gap-2 items-start">
+        <Link href="/">
+          <TosmocLogo/>
         </Link>
         <p className="text-muted text-sm px-4 max-w-60 font-semibold">
           Su sitio matemático de confianza, TOMOC.

@@ -1,23 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Estilos para fórmulas LaTeX */
-.latex-container {
-    line-height: 1.6;
-    overflow-x: auto;
-}
-
-.latex-container .MathJax {
-    margin: 0.5em 0;
-}
-
-.latex-container .MathJax[display="true"] {
-    margin: 1em 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    max-width: 100%;
-}
-
 :root {
   /* 🎨 Colores por defecto */
   --Default: #F8F9FC; /* Fondo principal */
@@ -121,6 +104,17 @@
 
     --sidebar-ring: oklch(0.708 0 0);
 
+}
+
+/* Modo Oscuro */
+.dark {
+  --Default: #000;
+  --Default-50: #111;
+  --Default-100: #222;
+  --Default-200: #333;
+  --Default-300: #444;
+  --Default-400: #555;
+  --Default-500: #666;
 }
 
 @theme inline {

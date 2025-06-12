@@ -1,5 +1,6 @@
 "use client"
 
+import Loading from "@/components/Loading"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { getLatestData } from "@/data/getLatestData"
@@ -32,7 +33,7 @@ export function SearchFilters({
 
         const getData = async () => {
 
-            const answer = await getLatestData<IProblemTypes[]>('data/problemTypes.json')
+            const answer = await getLatestData<IProblemTypes[]>('problemTypes.json')
 
             setProblemTypes(answer ?? []);
             setIsLoading(false);
@@ -42,7 +43,8 @@ export function SearchFilters({
     }, [])
 
     if (isLoading) {
-        return <></>
+        // TODO: Change this loading circle to a loading bar, or something better.
+        return <Loading/>
     }
 
     if (!problemTypes) {
