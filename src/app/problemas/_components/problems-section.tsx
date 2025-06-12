@@ -1,18 +1,26 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ProblemCard } from "./ProblemCard"
-import { problems } from "./problems-data"
 import { SearchFilters } from "./SearchFilters"
 import { UploadProblemDialog } from "./UploadProblemDialog"
+import Loading from "@/components/Loading"
+import { getLatestData } from "@/data/getLatestData"
+import IVProblems from "@/interfaces/Views/IVProblems"
+import { inRange } from "@/functions/inRange"
+import { RangeList } from "@/types/RangeList"
 
 export default function ProblemsSection() {
-    const [selectedProblem, setSelectedProblem] = useState<number | null>(null)
+    const [problems, setProblems] = useState<IVProblems[]>([]);
     const [showUploadDialog, setShowUploadDialog] = useState(false)
     const [searchQuery, setSearchQuery] = useState("")
     const [categoryFilter, setCategoryFilter] = useState("all")
-    const [difficultyFilter, setDifficultyFilter] = useState("all")
+    
+    const defaultDifficultyFilter: RangeList = [0, 10]
+    const [difficultyFilter, setDifficultyFilter] = useState<RangeList>(defaultDifficultyFilter)
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const filteredProblems = useMemo(() => {
         let result = [...problems]
@@ -21,20 +29,18 @@ export default function ProblemsSection() {
             const query = searchQuery.toLowerCase()
             result = result.filter(
                 (problem) =>
-                    problem.title.toLowerCase().includes(query) ||
-                    problem.statement.toLowerCase().includes(query) ||
-                    problem.category.toLowerCase().includes(query) ||
+                    query && problem.problem_name.toLowerCase().includes(query) ||
+                    problem.explication.toLowerCase().includes(query) ||
+                    problem.problem_type_name.toLowerCase().includes(query) ||
                     problem.author.toLowerCase().includes(query),
             )
         }
 
         if (categoryFilter !== "all") {
-            result = result.filter((problem) => problem.category.toLowerCase() === categoryFilter.toLowerCase())
+            result = result.filter((problem) => problem.problem_type_name.toLowerCase() === categoryFilter.toLowerCase())
         }
 
-        if (difficultyFilter !== "all") {
-            result = result.filter((problem) => problem.difficulty.toLowerCase() === difficultyFilter.toLowerCase())
-        }
+        result = result.filter((problem) => inRange(problem.difficulty, difficultyFilter))
 
         return result
     }, [searchQuery, categoryFilter, difficultyFilter])
@@ -42,8 +48,31 @@ export default function ProblemsSection() {
     const clearFilters = () => {
         setSearchQuery("")
         setCategoryFilter("all")
-        setDifficultyFilter("all")
+        setDifficultyFilter(defaultDifficultyFilter)
     }
+
+    useEffect(() => {
+
+        const getProblems = async () => {
+
+            const answer = await getLatestData<IVProblems[]>('VProblems')
+
+            setProblems(answer);
+            setIsLoading(false);
+        }
+
+        getProblems()
+    }, [])
+
+    if (isLoading) {
+        return <Loading/>
+    }
+
+    if (!problems) {
+        return;
+    }
+
+    console.log(problems)
 
     return (
         <section className="py-8">
@@ -73,8 +102,6 @@ export default function ProblemsSection() {
                             <ProblemCard
                                 key={problem.id}
                                 problem={problem}
-                                isSelected={selectedProblem === problem.id}
-                                onClick={() => setSelectedProblem(problem.id)}
                             />
                         ))
                     ) : (

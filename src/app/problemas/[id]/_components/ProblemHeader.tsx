@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Heart } from "lucide-react"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { Problem } from "./types"
+import { Problem } from "../../_components/types"
 
 interface ProblemHeaderProps {
     problem: Problem

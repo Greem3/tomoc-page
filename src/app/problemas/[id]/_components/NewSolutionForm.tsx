@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Send } from "lucide-react"
 import LaTexText from "@/components/Texts/LaTexText"
-import { SolutionFormData } from "./types"
+import { SolutionFormData } from "../../_components/types"
 
 interface NewSolutionFormProps {
     formData: SolutionFormData

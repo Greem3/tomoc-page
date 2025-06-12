@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { CheckCircle, Eye, EyeOff } from "lucide-react"
 import LaTexText from "@/components/Texts/LaTexText"
-import { OfficialSolution as OfficialSolutionType } from "./types"
+import { OfficialSolution as OfficialSolutionType } from "../../_components/types"
 
 interface OfficialSolutionProps {
     solution: OfficialSolutionType

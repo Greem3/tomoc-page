@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ProblemDetail } from "../_components/ProblemDetail"
+import { ProblemDetail } from "./_components/ProblemDetail"
 import { problems } from "../_components/problems-data"
 import { notFound, useParams } from "next/navigation"
 
