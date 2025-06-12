@@ -1,20 +1,22 @@
 "use client"
 
 import Loading from "@/components/Loading"
+import RangeInput from "@/components/Sliders/RangeSlider"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { getLatestData } from "@/data/getLatestData"
 import { IProblemTypes } from "@/interfaces/Views/IProblemTypes"
-import { Search } from "lucide-react"
+import { RangeList } from "@/types/RangeList"
+import { Box, Search } from "lucide-react"
 import { useEffect, useState } from "react"
 
 interface SearchFiltersProps {
     searchQuery: string
     categoryFilter: string
-    difficultyFilter: string
+    difficultyFilter: RangeList;
     onSearchChange: (value: string) => void
     onCategoryChange: (value: string) => void
-    onDifficultyChange: (value: string) => void
+    onDifficultyChange: (value: RangeList) => void
 }
 
 export function SearchFilters({
@@ -33,7 +35,7 @@ export function SearchFilters({
 
         const getData = async () => {
 
-            const answer = await getLatestData<IProblemTypes[]>('problemTypes.json')
+            const answer = await getLatestData<IProblemTypes[]>('ProblemTypes')
 
             setProblemTypes(answer ?? []);
             setIsLoading(false);
@@ -80,19 +82,26 @@ export function SearchFilters({
                 </SelectContent>
             </Select>
 
-            {/*TODO: Reemplazar este Select con un rango de dificultad que vaya del 1 al 10 */}
-            <Select value={difficultyFilter} onValueChange={onDifficultyChange}>
-                <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Dificultad" />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectItem value="all">Todas</SelectItem>
-                    <SelectItem value="principiante">Principiante</SelectItem>
-                    <SelectItem value="intermedio">Intermedio</SelectItem>
-                    <SelectItem value="avanzado">Avanzado</SelectItem>
-                    <SelectItem value="experto">Experto</SelectItem>
-                </SelectContent>
-            </Select>
+            {/*TODO: Arreglar el range Input por que no se como diseñarlo XD */}
+            <div className='w-64 self-center flex flex-col items-center -mt-4'>
+                <p className='opacity-40 transition-opacity duration-700 hover:opacity-100'>Rango de dificultad</p>
+
+                <div className='max-w-64 w-full flex items-center gap-2'>
+                    <span>
+                        {difficultyFilter[0]}
+                    </span>
+                    <RangeInput
+                        min={0}
+                        max={10}
+                        defaultValue={[0, 10]}
+                        onInput={onDifficultyChange}
+                        className='w-full'
+                    />
+                    <span>
+                        {difficultyFilter[1]}
+                    </span>
+                </div>
+            </div>
         </div>
     )
 } 

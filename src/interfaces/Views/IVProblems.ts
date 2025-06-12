@@ -5,7 +5,7 @@ import { IEntity } from 'jsql-api'
 export interface IVSimpleProblems extends IEntity {
     id:                 bigint;
     entity_id:          bigint;
-    username:           string;
+    author:           string;
     create_date:        Date;
     problem_type_name:       ProblemType;
     contest_name:       null | string;
@@ -20,7 +20,7 @@ export interface IVSimpleProblems extends IEntity {
 }
 
 export default interface IVProblems extends IVSimpleProblems {
-    user_id: bigint;
+    author_id: bigint;
     problem_type_id: number;
     contest_id: bigint | null;
     country_id: number|null;
