@@ -12,13 +12,13 @@
         "LOGO" : {
             "TEXT": "TOSMOC",
             "LINK": "/",
-            "SRC": "/LogoTomoc.png",
+            "SRC": "/dark/png/TOMOC-ico.png",
             "ALT": "Logo de la empresa"
         },
         "LOGO_BLANK" : {
             "TEXT": "TOSMOC",
             "LINK": "/",
-            "SRC": "/LogoTomocBlanco.png",
+            "SRC": "/white/png/TOMOC-ico.png",
             "ALT": "Logo de la empresa"
         },
         "ITEMS": [

@@ -1,2 +1,2 @@
 
-- Logo Font: Bankgothic
+- Logo Font: Bankgothic (Don't use)
