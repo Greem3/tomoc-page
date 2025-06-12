@@ -2,8 +2,10 @@
 
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { getLatestData } from "@/data/getLatestData"
+import { IProblemTypes } from "@/interfaces/Views/IProblemTypes"
 import { Search } from "lucide-react"
-import problemTypes from '@/data/problemTypes.json'
+import { useEffect, useState } from "react"
 
 interface SearchFiltersProps {
     searchQuery: string
@@ -22,6 +24,31 @@ export function SearchFilters({
     onCategoryChange,
     onDifficultyChange
 }: SearchFiltersProps) {
+
+    const [problemTypes, setProblemTypes] = useState<IProblemTypes[]>()
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+
+        const getData = async () => {
+
+            const answer = await getLatestData<IProblemTypes[]>('data/problemTypes.json')
+
+            setProblemTypes(answer ?? []);
+            setIsLoading(false);
+        }
+
+        getData()
+    }, [])
+
+    if (isLoading) {
+        return <></>
+    }
+
+    if (!problemTypes) {
+        return;
+    }
+
     return (
         <div className="flex flex-wrap gap-4 mb-6">
             <div className="flex-1 min-w-[300px]">
@@ -42,11 +69,12 @@ export function SearchFilters({
                 <SelectContent>
                     <SelectItem value="all">Todas</SelectItem>
                     {problemTypes.map((problemType) => <SelectItem
-                        value={problemType.name}
-                    >
-                        {problemType.name}
-                    </SelectItem>)
-                    }
+                            value={problemType.name}
+                            key={problemType.id}
+                        >
+                            {problemType.name}
+                        </SelectItem>
+                    )}
                 </SelectContent>
             </Select>
 
