@@ -1,5 +1,5 @@
 import Image from "next/image";
-import locale from "@/data/root.json";
+import locale from "@/data/preData/root.json";
 
 export default function TosmocLogo({ variant = 'white', imageWidth = 82, imageHeight = 82 }: { variant?: 'white'|'dark', imageWidth?: number, imageHeight?: number}) {
 

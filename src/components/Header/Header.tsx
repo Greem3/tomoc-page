@@ -1,6 +1,6 @@
 "use client";
 
-import locale from "@/data/root.json";
+import locale from "@/data/preData/root.json";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

@@ -1,5 +1,5 @@
 import { Calculator, BookOpen, Award, Users, Brain, LineChart, LucideIcon } from "lucide-react"
-import featuresData from "@/data/features.json"
+import featuresData from "@/data/preData/features.json"
 
 type IconComponents = {
     [key: string]: LucideIcon;

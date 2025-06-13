@@ -1,5 +1,5 @@
 import Link from "next/link";
-import locale from "@/data/root.json"
+import locale from "@/data/preData/root.json"
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 

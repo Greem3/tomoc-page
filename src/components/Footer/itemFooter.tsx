@@ -1,4 +1,4 @@
-import locale from "@/data/root.json";
+import locale from "@/data/preData/root.json";
 import Link from "next/link";
 import { Github, Instagram } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
