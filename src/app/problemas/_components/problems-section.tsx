@@ -43,7 +43,7 @@ export default function ProblemsSection() {
         result = result.filter((problem) => inRange(problem.difficulty, difficultyFilter))
 
         return result
-    }, [searchQuery, categoryFilter, difficultyFilter])
+    }, [searchQuery, categoryFilter, difficultyFilter, problems])
 
     const clearFilters = () => {
         setSearchQuery("")
