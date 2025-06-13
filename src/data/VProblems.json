@@ -1,0 +1,42 @@
+[
+    {
+        "id": 2,
+        "entity_id": 2,
+        "author_id": 1,
+        "author": "testuser1",
+        "create_date": "2025-06-12",
+        "problem_type_id": 1,
+        "problem_type_name": "Number Theory",
+        "contest_id": 1,
+        "contest_name": "International Math Olympic 2025",
+        "contest_short_name": "IMO 2025",
+        "contest_type": "Olympiad",
+        "problem_name": "Test Procedure Problem",
+        "explication": "Hello",
+        "country_id": null,
+        "country_name": null,
+        "difficulty": "5.0",
+        "points": 500,
+        "verified": true
+    },
+    {
+        "id": 3,
+        "entity_id": 3,
+        "author_id": 1,
+        "author": "testuser1",
+        "create_date": "2025-06-12",
+        "problem_type_id": 1,
+        "problem_type_name": "Number Theory",
+        "contest_id": null,
+        "contest_name": null,
+        "contest_short_name": null,
+        "contest_type": null,
+        "problem_name": "Test Procedure Problem 2",
+        "explication": "Second Problem",
+        "country_id": null,
+        "country_name": null,
+        "difficulty": "1.0",
+        "points": 250,
+        "verified": true
+    }
+]
