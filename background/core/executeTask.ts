@@ -5,9 +5,19 @@ import { showError } from "./showError";
  * @param task Task to execute
  * @param timeout Time in milliseconds
  */
-export async function executeTask(task: (...args: any[]) => Promise<void>, timeout: number, index: number) {
+export function executeTask(task: (...args: any[]) => Promise<void>, timeout: number, index: number) {
 
-    await showError(task, index)
+    return new Promise<void>(async (resolve) => {
 
-    setTimeout(() => executeTask(task, timeout, index), timeout);
+        const loop = async (isFirst = true) => {
+
+            await showError(task, index);
+
+            if (isFirst) resolve();
+
+            setTimeout(() => loop(false), timeout)
+        }
+
+        loop()
+    })
 }

@@ -5,9 +5,18 @@ import { executeTasks } from "./executeTasks";
  * @param tasksList List of Tasks
  * @param timeout Time in milliseconds
  */
-export async function executeSameLevelTasks(tasksList: ((...args: any[]) => Promise<void>)[], timeout: number ) {
-    
-    await executeTasks(tasksList);
+export function executeSameLevelTasks(tasksList: ((...args: any[]) => Promise<void>)[], timeout: number ) {
 
-    setTimeout(() => executeSameLevelTasks(tasksList, timeout), timeout)
+    return new Promise<void>(async (resolve) => {
+
+        const loop = async (isFirst = true) => {
+            await executeTasks(tasksList);
+
+            if (isFirst) resolve();
+
+            setTimeout(() => loop(false), timeout)
+        }
+
+        loop()
+    });
 }

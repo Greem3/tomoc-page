@@ -1,6 +1,6 @@
 import { ISelect } from 'jsql-api'
 import useSqlApi from '../../src/hooks/fetchSqlApi'
-import { editFile } from '../utils/editFile'
+import { editJsonFile } from '../utils/editJsonFile'
 
 interface IGeneralUpdateProps {
     tableName: string,
@@ -21,5 +21,5 @@ export async function generalUpdate({tableName, schema, file}: IGeneralUpdatePro
         }
     })
 
-    editFile(`../src/data/${file ?? tableName}.json`, response?.data ?? [])
+    editJsonFile(`../src/data/${file ?? tableName}.json`, response?.data ?? [])
 }

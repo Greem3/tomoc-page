@@ -5,9 +5,9 @@ import { executeTask } from "./executeTask";
  * @param tasksList List of Tasks
  * @param timeout Time in milliseconds
  */
-export function executeDistinctLevelTasks(tasksList: ((...args: any[]) => Promise<void>)[], timeout: number) {
+export async function executeDistinctLevelTasks(tasksList: ((...args: any[]) => Promise<void>)[], timeout: number) {
 
-    tasksList.forEach((task, index) => {
-        executeTask(task, timeout, index);
-    })
+    await Promise.all(
+        tasksList.map((task, index) => executeTask(task, timeout, index))
+    )
 }
