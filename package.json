@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "backend": "tsx ./background/main.ts",
+    "ignore": "git rm --cached src/types/DataFiles.d.ts",
+    "postinstall": "npm run ignore",
     "dev": "concurrently \"next dev --turbopack\" \"pnpm backend\"",
     "build": "concurrently \"next build\" \"pnpm backend\"",
     "start": "concurrently \"next start\" \"pnpm backend\"",

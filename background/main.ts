@@ -31,7 +31,7 @@ await Promise.all([
 ])
 
 generateFilesType({
-    filesPath: path.resolve(__dirname, '../src/data'),
+    filesPath: path.resolve(__dirname, '../src/data/liveData'),
     typeName: 'DataFiles',
-    saveFile: '../types'
+    saveFile: '../../types'
 })

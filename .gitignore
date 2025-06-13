@@ -40,9 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/src/data/*.json
-!/src/data/root.json
-!/src/data/features.json
-!/src/data/difficulties.json
+/src/data/liveData/*.json
 
 /src/types/DataFiles.d.ts

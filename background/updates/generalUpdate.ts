@@ -21,5 +21,5 @@ export async function generalUpdate({tableName, schema, file}: IGeneralUpdatePro
         }
     })
 
-    editJsonFile(`../src/data/${file ?? tableName}.json`, response?.data ?? [])
+    editJsonFile(`../src/data/liveData/${file ?? tableName}.json`, response?.data ?? [])
 }
