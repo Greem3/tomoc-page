@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { getLatestData } from "@/data/getLatestData"
 import { IProblemTypes } from "@/interfaces/Views/IProblemTypes"
 import { RangeList } from "@/types/RangeList"
-import { Box, Search } from "lucide-react"
+import { Search } from "lucide-react"
 import { useEffect, useState } from "react"
 
 interface SearchFiltersProps {
