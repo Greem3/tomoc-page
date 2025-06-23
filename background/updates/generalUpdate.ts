@@ -1,5 +1,5 @@
 import { ISelect } from 'jsql-api'
-import useSqlApi from '../../src/hooks/fetchSqlApi'
+import useSqlApi from '../../src/functions/fetchSqlApi'
 import { editJsonFile } from '../utils/editJsonFile'
 
 interface IGeneralUpdateProps {
