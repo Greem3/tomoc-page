@@ -25,6 +25,7 @@ const problemLevel = taskManager.executeSameLevelTasks([
     updateProblems
 ], 60000); // 1 minute (60000)
 
+// This waits for all task files to be generated to generate the DataFiles type file.
 await Promise.all([
     problemLevel,
     secondaryLevel
